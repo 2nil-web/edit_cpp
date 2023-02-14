@@ -43,8 +43,8 @@ SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 #define UNICODE
 #endif
 
-#include <editline/readline.h>
-#include <editline/wineditline.h>
+#include <readline/readline.h>
+#include <readline/wineditline.h>
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
