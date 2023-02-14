@@ -9,16 +9,8 @@
 #include <readline/history.h>
 
 
-int histo_len() {
-#ifdef _MSC_VER
-  return history_length();
-#else
-  return history_length;
-#endif
-}
-
 HIST_ENTRY **get_histo(int& l) {
-  l=histo_len();
+  l=history_length();
   return history_list();
 }
 
