@@ -164,7 +164,7 @@ returns 0 if successful, -1 if not
 */
 int using_history()
 {
-  wchar_t *string_size;
+  wchar_t *string_size=NULL;
   int size = DEFAULT_HISTORY_SIZE;
   int temp_size;
   size_t n;
@@ -179,12 +179,11 @@ int using_history()
   if (n) {
     if ((string_size = (wchar_t *)malloc((n + 1) * sizeof(wchar_t)))) {
       _wgetenv_s(&n, string_size, n, _T("MINGWEDITLINE_HISTORY_SIZE"));
-    }
-    else {
+    } else {
       n = 0;
     }
   }
-  if (n) {
+  if (n && string_size) {
     swscanf_s(string_size, _T("%d"), &temp_size);
     if (temp_size >= _EL_MIN_HIST_SIZE) {
       size = temp_size;

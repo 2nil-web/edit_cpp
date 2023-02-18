@@ -3,6 +3,7 @@
 #define UTIL_H
 
 
+#include <vector>
 #include <functional>
 
 #ifdef _WIN32

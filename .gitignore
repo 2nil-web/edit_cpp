@@ -1,7 +1,8 @@
-
+.*history
 .vs
 *.vcxproj.user
+*.vcxproj.filters
 *.d
 *.o
 *.exe
-
+x64
