@@ -18,7 +18,7 @@ all: ${TARGET}
 ${TARGET} : ${OBJS}
 
 clean :
-	rm -f ${OBJS}
+	rm -f ${OBJS} *.d *.exe
 
 ifneq ($(MAKECMDGOALS),clean)
 %.exe: %.o
