@@ -30,14 +30,14 @@ bool history_expand_cpp(std::string& line) {
     }
 
     //add_history(expansion);
-    if (line != expansion && expansion != "")
+    if (line != expansion)
         std::cout << '[' << line << "] expanded to [" << expansion << ']' << std::endl;
     line = expansion;
     delete expansion;
     return true;
 }
 
-int main(int argc, char** argv) {
+int main(int, char**) {
     std::string line;
     int idx = 1;
 

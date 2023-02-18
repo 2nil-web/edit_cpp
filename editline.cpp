@@ -1361,8 +1361,8 @@ char *readline(const char *prompt)
                 _el_clean_exit();
                 return NULL;
               }
-              break;
             }
+              break;
             
             /*
             delete until end of line
@@ -1378,8 +1378,8 @@ char *readline(const char *prompt)
                   return NULL;
                 }
               }
-              break;
             }
+              break;
 
             /*
             beginning-of-line

@@ -2,7 +2,7 @@
 ifneq ($(shell uname -s),Linux)
 ifeq (${HOSTNAME},PC-Denis)
 CMAKE='/c/Program Files/CMake/bin/cmake.exe'
-#MSBUILD='C:\Program Files\Microsoft Visual Studio\2022\Community\MSBuild\Current\Bin\amd64\MSBuild.exe'
+MSBUILD='C:\Program Files\Microsoft Visual Studio\2022\Community\MSBuild\Current\Bin\amd64\MSBuild.exe'
 endif
 
 EXEXT=.exe
@@ -13,7 +13,7 @@ endif
 
 CPPFLAGS += -I .
 CXXFLAGS += -std=c++23 -Wall -Wextra -pedantic
-LDFLAGS += -L .
+LDFLAGS += -static -L .
 LDLIBS += -ledit_cpp
 PREFIX=edit_cpp
 SRCS=$(wildcard *.cpp)
@@ -24,15 +24,16 @@ TARGET=${PREFIX}${EXEXT}
 STRIP=strip
 UPX=upx
 
-all: libedit_cpp.a ${TARGET}
 
 ifeq ($(MSBUILD),)
+all: libedit_cpp.a ${TARGET}
 ${TARGET} : ${OBJS_TARGET}
 
 libedit_cpp.a : ${OBJS_LIB}
 	ar r $@  $?	
 
 else
+all: ${TARGET}
 ${TARGET} : ${SRCS}
 	${MSBUILD} ${PREFIX}.sln -p:Configuration=Release
 	cp x64/Release/${TARGET} .
